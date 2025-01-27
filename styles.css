@@ -15,6 +15,14 @@ main {
   margin: 2rem;
 }
 
+input {
+  padding: 0.5rem;
+  width: 60%;
+  margin-right: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
 button {
   background-color: #007BFF;
   color: white;
@@ -28,9 +36,49 @@ button:hover {
   background-color: #0056b3;
 }
 
-.project {
-  margin: 1rem 0;
-  padding: 1rem;
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  display: flex;
+  align-items: center;
+  margin: 0.5rem 0;
+  padding: 0.5rem;
   border: 1px solid #ddd;
   border-radius: 5px;
+  text-align: left;
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: space-between;
+}
+
+li .task-text {
+  flex: 1;
+  margin-left: 1rem;
+}
+
+li.completed .task-text {
+  text-decoration: line-through;
+  color: gray;
+}
+
+li input[type="checkbox"] {
+  width: 10px;
+  height: 10px;
+}
+
+li .remove {
+  background: red;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  padding: 0.2rem 0.5rem;
+}
+
+li .remove:hover {
+  background: darkred;
 }

@@ -1,20 +1,38 @@
-const projects = [
-  { name: 'Project Alpha', description: 'A groundbreaking AI project.' },
-  { name: 'Project Beta', description: 'An innovative web development tool.' },
-  { name: 'Project Gamma', description: 'A powerful data visualization library.' },
-];
+function addTodo() {
+  const todoInput = document.getElementById('todo-input');
+  const todoList = document.getElementById('todo-list');
 
-function addProject() {
-  const projectList = document.getElementById('project-list');
-  const randomIndex = Math.floor(Math.random() * projects.length);
-  const project = projects[randomIndex];
+  if (todoInput.value.trim() === '') {
+    alert('Please enter a task!');
+    return;
+  }
 
-  const projectDiv = document.createElement('div');
-  projectDiv.className = 'project';
-  projectDiv.innerHTML = `
-    <h2>${project.name}</h2>
-    <p>${project.description}</p>
-  `;
+  const listItem = document.createElement('li');
 
-  projectList.appendChild(projectDiv);
+  const checkbox = document.createElement('input');
+  checkbox.type = 'checkbox';
+  checkbox.addEventListener('change', () => {
+    if (checkbox.checked) {
+      listItem.classList.add('completed');
+    } else {
+      listItem.classList.remove('completed');
+    }
+  });
+
+  const textSpan = document.createElement('span');
+  textSpan.textContent = todoInput.value;
+  textSpan.className = 'task-text';
+
+  const removeButton = document.createElement('button');
+  removeButton.textContent = 'Remove';
+  removeButton.className = 'remove';
+  removeButton.onclick = function () {
+    todoList.removeChild(listItem);
+  };
+
+  listItem.appendChild(checkbox);
+  listItem.appendChild(textSpan);
+  listItem.appendChild(removeButton);
+  todoList.appendChild(listItem);
+  todoInput.value = '';
 }
